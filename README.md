@@ -30,7 +30,7 @@ Since this extension is not on the Chrome Web Store, you'll need to install it m
 The CSV will contain:
 | Column | Description |
 |--------|-------------|
-| Position | Result ranking (1, 2, 3...) |
+| Position | Page and result ranking (e.g., 1.1, 1.2 for page 1; 2.1, 2.2 for page 2) |
 | Title | The clickable title of the result |
 | URL | The destination URL |
 | Snippet | The description text shown below the title |
@@ -40,8 +40,15 @@ The CSV will contain:
 
 ```csv
 Position,Title,URL,Snippet,Sponsored
-1,"Example Website","https://example.com","This is the description text...","No"
-2,"Another Result","https://another.com","More description here...","No"
+1.1,"Example Website","https://example.com","This is the description text...","No"
+1.2,"Another Result","https://another.com","More description here...","No"
+```
+
+For page 2 results:
+```csv
+Position,Title,URL,Snippet,Sponsored
+2.1,"Page Two Result","https://example2.com","Description...","No"
+2.2,"Another Page Two","https://another2.com","More text...","No"
 ```
 
 ## Permissions

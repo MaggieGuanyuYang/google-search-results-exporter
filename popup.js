@@ -46,6 +46,17 @@ function extractSearchResults() {
   const results = [];
   const seenUrls = new Set();
   
+  // Get the current page number from URL
+  // Google uses 'start' parameter: page 1 = 0 or absent, page 2 = 10, page 3 = 20, etc.
+  const urlParams = new URLSearchParams(window.location.search);
+  const startParam = parseInt(urlParams.get('start')) || 0;
+  const pageNumber = Math.floor(startParam / 10) + 1;
+  
+  // Helper function to format position as "page.position" (e.g., 1.1, 1.2, 2.1)
+  function formatPosition(resultIndex) {
+    return `${pageNumber}.${resultIndex}`;
+  }
+  
   // Helper function to check if URL should be skipped
   function shouldSkipUrl(url) {
     if (!url) return true;
@@ -169,7 +180,7 @@ function extractSearchResults() {
         const snippet = extractSnippet(block);
         
         results.push({
-          position: results.length + 1,
+          position: formatPosition(results.length + 1),
           title: title,
           url: url,
           snippet: snippet.substring(0, 500),
@@ -217,7 +228,7 @@ function extractSearchResults() {
         const snippet = extractSnippet(container);
         
         results.push({
-          position: results.length + 1,
+          position: formatPosition(results.length + 1),
           title: title,
           url: url,
           snippet: snippet.substring(0, 500),
@@ -247,7 +258,7 @@ function extractSearchResults() {
         seenUrls.add(url);
         
         results.push({
-          position: results.length + 1,
+          position: formatPosition(results.length + 1),
           title: title.substring(0, 200),
           url: url,
           snippet: '',
