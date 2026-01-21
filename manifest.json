@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Google Search Results Exporter",
+  "version": "1.0.0",
+  "description": "Export Google search results to CSV with one click. Captures title, URL, snippet, and position.",
+  "permissions": ["activeTab", "scripting", "downloads"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    }
+  },
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  }
+}
